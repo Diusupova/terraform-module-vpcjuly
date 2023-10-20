@@ -16,7 +16,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  depends_on = [aws_vpc.main.id]
+  depends_on = [aws_subnet.main1]
   ami                    = data.aws_ami.ubuntu.id
   user_data = file("apache.sh")
   subnet_id = aws_subnet.main1.id
